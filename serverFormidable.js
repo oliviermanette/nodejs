@@ -2,6 +2,7 @@ var formidable = require('formidable');
 var http = require('http');
 var sys = require('util');
 var fs = require('fs');
+const sqlite3 = require('sqlite3');
 
 http.createServer(function(req, res){
 	if (req.url == '/upload' && req.method.toLowerCase() == 'post')
@@ -36,6 +37,10 @@ http.createServer(function(req, res){
 		res.writeHead(200,{'content-type':'text/plain'});
 		res.end('Vous arrivez sur cette page de la mauvaise façon. Contactez un administrateur, \n email : info@flod.aero \n Merci.');
 		return;
+	}
+	else if (req.url == '/watch')
+	{
+		
 	}
 	
 	res.writeHead(200,{'content-type':'text/html'});
