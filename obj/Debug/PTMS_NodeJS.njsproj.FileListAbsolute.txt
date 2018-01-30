@@ -1,0 +1,3 @@
+C:\Users\olivier\OneDrive - FLod.aero\flod.aero\Produits\Vauché\GitHub\nodejs\obj\Debug\PTMS_NodeJS.njsprojResolveAssemblyReference.cache
+C:\Users\olivier\OneDrive - FLod.aero\flod.aero\Produits\Vauché\GitHub\nodejs\obj\Debug\PTMS_NodeJS.njsproj.CoreCompileInputs.cache
+C:\Users\olivier\OneDrive - FLod.aero\flod.aero\Produits\Vauché\GitHub\nodejs\bin\Microsoft.NodejsTools.WebRole.dll

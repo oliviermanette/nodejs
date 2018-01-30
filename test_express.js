@@ -15,6 +15,17 @@ app.get('/', function(req, res) {
 	console.log('loading homepage');
 });
 
+app.get('/watch/start/:serialno', function(req, res)
+{
+	res.setHeader('Content-Type', 'text/html');
+	console.log('reçu une information de démarage de ' + req.params.serialno);
+	res.end(
+	'Bonjour '+ req.params.serialno
+	);
+}
+
+);
+
 
 
 app.listen(8080);
