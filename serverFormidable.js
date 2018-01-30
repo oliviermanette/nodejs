@@ -34,7 +34,7 @@ http.createServer(function(req, res){
 	{
 		console.log("BAD way to upload");
 		res.writeHead(200,{'content-type':'text/plain'});
-		res.end('Vous arrivez sur cette page de la mauvaise façon. Contactez un administrateur : info@flod.aero Merci.');
+		res.end('Vous arrivez sur cette page de la mauvaise façon. Contactez un administrateur, \n email : info@flod.aero \n Merci.');
 		return;
 	}
 	
