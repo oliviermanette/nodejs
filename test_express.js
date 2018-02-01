@@ -68,11 +68,38 @@ app.post('/upload', function(req, res)
     );
 });
 
+app.get('/watch/recording/:serialno', function (req, res) {
+    res.setHeader('Content-Type', 'text/plain');
+    console.log('start recording ...');
+    let db = new sqlite3.Database('../untitled/db/ptms.db', (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+        console.log('Connected to the PTMS database.');
+    });
+    let sql = "update Montres set status='recording', LastActif='" + Date.now() +
+        "', IP='" + req.connection.remoteAddress +
+        "' where codeID='" + req.params.serialno + "'";
+    db.run(sql);
+    db.close((err) => {
+        if (err) {
+            return console.error(err.message);
+            console.log("ERROR : couldn't find " + req.params.serialno);
+        }
+        console.log('Close the database connection.');
+    });
+    res.end(
+        'OK ' + req.params.serialno + '!'
+    );
+
+});
+
 // ... Tout le code de gestion des routes (app.get) se trouve au-dessus
 
 app.use(function (req, res, next) {
     res.setHeader('Content-Type', 'text/plain');
-    res.send(404, ' Vous arrivez sur cette page par la mauvaise méthode.\n Veuillez contacter un administrateur : info@flod.aero \n Merci !');
+    res.status(404).send(' Vous arrivez sur cette page par la mauvaise méthode.\n Veuillez contacter un administrateur : info@flod.aero \n Merci !');
+    console.log('404...\n');
 });
 
 
