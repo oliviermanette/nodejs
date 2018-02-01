@@ -26,7 +26,7 @@ app.get('/watch/start/:serialno', function(req, res)
         if (err) {
             console.error(err.message);
         }
-        console.log('Connected to the PTMS database.');
+        //console.log('Connected to the PTMS database.');
     });
     let sql = "update Montres set status='started', LastActif='" + Date.now() +
         "', IP='" + req.connection.remoteAddress +
@@ -36,7 +36,7 @@ app.get('/watch/start/:serialno', function(req, res)
         if (err) {
             return console.error(err.message);
         }
-        console.log('Close the database connection.');
+        //console.log('Close the database connection.');
     });
 	res.end(
 	'Bonjour '+ req.params.serialno
@@ -70,12 +70,12 @@ app.post('/upload', function(req, res)
 
 app.get('/watch/recording/:serialno', function (req, res) {
     res.setHeader('Content-Type', 'text/plain');
-    console.log('start recording ...');
+    console.log('start recording ...' + req.params.serialno);
     let db = new sqlite3.Database('../untitled/db/ptms.db', (err) => {
         if (err) {
             console.error(err.message);
         }
-        console.log('Connected to the PTMS database.');
+        //console.log('Connected to the PTMS database.');
     });
     let sql = "update Montres set status='recording', LastActif='" + Date.now() +
         "', IP='" + req.connection.remoteAddress +
@@ -86,7 +86,7 @@ app.get('/watch/recording/:serialno', function (req, res) {
             return console.error(err.message);
             console.log("ERROR : couldn't find " + req.params.serialno);
         }
-        console.log('Close the database connection.');
+        //console.log('Close the database connection.');
     });
     res.end(
         'OK ' + req.params.serialno + '!'
